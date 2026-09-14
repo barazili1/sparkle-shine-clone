@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ChevronRight, Star, X } from "lucide-react";
 import { useState, type SVGProps } from "react";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
+import { AccessGate } from "@/components/access-gate";
 
 export const Route = createFileRoute("/transfer")({
   head: () => ({
@@ -14,7 +15,7 @@ export const Route = createFileRoute("/transfer")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: TransferPage,
+  component: () => (<AccessGate><TransferPage /></AccessGate>),
 });
 
 function ContactBookIcon(props: SVGProps<SVGSVGElement>) {
