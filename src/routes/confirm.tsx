@@ -7,6 +7,7 @@ import cashWatermark from "@/assets/cash-watermark.png.asset.json";
 import loadingLogo from "@/assets/vodafone-loading-logo.png.asset.json";
 import { PinSheet } from "@/components/pin-sheet";
 import { getSenderNameForPhone } from "@/lib/sender-names";
+import { AccessGate } from "@/components/access-gate";
 
 export const Route = createFileRoute("/confirm")({
   validateSearch: (search: Record<string, unknown>) => ({
