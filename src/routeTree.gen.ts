@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TokenRouteImport } from './routes/$token'
 import { Route as ConfirmRouteImport } from './routes/confirm'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as TransferRouteImport } from './routes/transfer'
@@ -17,6 +18,11 @@ import { Route as TransferRouteImport } from './routes/transfer'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TokenRoute = TokenRouteImport.update({
+  id: '/$token',
+  path: '/$token',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConfirmRoute = ConfirmRouteImport.update({
@@ -37,12 +43,14 @@ const TransferRoute = TransferRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$token': typeof TokenRoute
   '/confirm': typeof ConfirmRoute
   '/success': typeof SuccessRoute
   '/transfer': typeof TransferRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$token': typeof TokenRoute
   '/confirm': typeof ConfirmRoute
   '/success': typeof SuccessRoute
   '/transfer': typeof TransferRoute
@@ -50,20 +58,22 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$token': typeof TokenRoute
   '/confirm': typeof ConfirmRoute
   '/success': typeof SuccessRoute
   '/transfer': typeof TransferRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/confirm' | '/success' | '/transfer'
+  fullPaths: '/' | '/$token' | '/confirm' | '/success' | '/transfer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/confirm' | '/success' | '/transfer'
-  id: '__root__' | '/' | '/confirm' | '/success' | '/transfer'
+  to: '/' | '/$token' | '/confirm' | '/success' | '/transfer'
+  id: '__root__' | '/' | '/$token' | '/confirm' | '/success' | '/transfer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TokenRoute: typeof TokenRoute
   ConfirmRoute: typeof ConfirmRoute
   SuccessRoute: typeof SuccessRoute
   TransferRoute: typeof TransferRoute
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$token': {
+      id: '/$token'
+      path: '/$token'
+      fullPath: '/$token'
+      preLoaderRoute: typeof TokenRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/confirm': {
@@ -104,6 +121,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TokenRoute: TokenRoute,
   ConfirmRoute: ConfirmRoute,
   SuccessRoute: SuccessRoute,
   TransferRoute: TransferRoute,
