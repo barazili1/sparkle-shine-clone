@@ -162,7 +162,7 @@ function ConfirmPage() {
       </div>
 
       {/* Confirm */}
-      <div className="shrink-0 px-5 pb-3 pt-2">
+      <div className="mb-5 shrink-0 px-5 pb-3 pt-2">
         <button
           type="button"
           disabled={confirmLoading}
