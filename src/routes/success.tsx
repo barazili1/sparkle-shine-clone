@@ -25,7 +25,7 @@ export const Route = createFileRoute("/success")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: SuccessPage,
+  component: () => (<AccessGate><SuccessPage /></AccessGate>),
 });
 
 const arabicMonths = [

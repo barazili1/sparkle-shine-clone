@@ -14,7 +14,7 @@ export const Route = createFileRoute("/transfer")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: TransferPage,
+  component: () => (<AccessGate><TransferPage /></AccessGate>),
 });
 
 function ContactBookIcon(props: SVGProps<SVGSVGElement>) {

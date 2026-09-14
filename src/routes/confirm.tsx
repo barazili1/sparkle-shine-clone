@@ -23,7 +23,7 @@ export const Route = createFileRoute("/confirm")({
       { name: "twitter:card", content: "summary" },
     ],
   }),
-  component: ConfirmPage,
+  component: () => (<AccessGate><ConfirmPage /></AccessGate>),
 });
 
 function ConfirmPage() {
