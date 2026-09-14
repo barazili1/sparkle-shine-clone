@@ -14,7 +14,62 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      access_devices: {
+        Row: {
+          created_at: string
+          device_id: string
+          id: string
+          key_id: string
+        }
+        Insert: {
+          created_at?: string
+          device_id: string
+          id?: string
+          key_id: string
+        }
+        Update: {
+          created_at?: string
+          device_id?: string
+          id?: string
+          key_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_devices_key_id_fkey"
+            columns: ["key_id"]
+            isOneToOne: false
+            referencedRelation: "access_keys"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      access_keys: {
+        Row: {
+          code_name: string
+          created_at: string
+          expires_at: string
+          id: string
+          max_devices: number
+          token: string
+        }
+        Insert: {
+          code_name: string
+          created_at?: string
+          expires_at: string
+          id?: string
+          max_devices?: number
+          token: string
+        }
+        Update: {
+          code_name?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          max_devices?: number
+          token?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
