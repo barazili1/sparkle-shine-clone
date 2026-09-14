@@ -323,7 +323,7 @@ function SuccessPage() {
 
 
       {/* Footer logos + buttons */}
-      <div className="shrink-0 px-5 pb-3 pt-2">
+      <div className="mb-4 shrink-0 px-5 pb-3 pt-2">
         <div className="mb-3 flex items-center justify-center">
           <img
             src={vodafoneCashCombo.url}
