@@ -221,3 +221,8 @@
 @utility loading-beat {
   animation: beat 1s ease-in-out infinite;
 }
+
+/* Hide the Lovable badge */
+#lovable-badge {
+  display: none !important;
+}
